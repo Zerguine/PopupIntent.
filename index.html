@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>نافذة اجبارية</title>
+    <style>
+        /* تنسيق النافذة */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- النافذة الاجبارية -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>اشترك في خدمتنا</h2>
+            <p>سجل الآن للاشتراك في خدمتنا الرائعة!</p>
+            <button onclick="closeModal()">إغلاق</button>
+            <!-- يمكنك هنا وضع نموذج اشتراك إذا رغبت -->
+        </div>
+    </div>
+
+    <script>
+        // الدالة لإظهار النافذة الاجبارية
+        function showModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // الدالة لإغلاق النافذة الاجبارية
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // استدعاء الدالة عند محاولة المستخدم مغادرة الموقع
+        window.addEventListener("beforeunload", function (event) {
+            showModal();
+            // إلغاء إغلاق النافذة الاجبارية عندما يحاول المستخدم المغادرة
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
